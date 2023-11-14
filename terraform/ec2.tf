@@ -11,7 +11,7 @@ data "aws_ami" "Devops-Image" {
     name   = "tags:Name"
     values = [var.ami_name]
   }
-  depends_on = [ aws_instance.terraform_ec2 ]
+  
 }
 
 resource "aws_instance" "terraform_ec2" {
@@ -21,6 +21,7 @@ resource "aws_instance" "terraform_ec2" {
   tags = {
     Name = "terraform-instance"
   }
+  depends_on = [ data.aws_ami.Devops-Image ]
 }
 
 output "instance_Id" {
