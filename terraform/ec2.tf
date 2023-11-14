@@ -8,7 +8,7 @@ data "aws_ami" "Devops-Image" {
   owners = ["self"]
 
   filter {
-    name   = "tags:Name"
+    name   = "tag:Name"
     values = [var.ami_name]
   }
   
